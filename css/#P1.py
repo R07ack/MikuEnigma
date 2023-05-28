@@ -13,6 +13,19 @@ def si1():
     script.config(text='Empecemos :)')
     btnSI.pack_forget()
     btnNO.place_forget()
+    
+    
+    
+    
+    
+    
+#JASHSJSJSKJAS
+
+
+
+
+
+
 
 def opt():
     btnSI.pack(pady=10)
