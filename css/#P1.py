@@ -7,7 +7,7 @@ r2 = "PATOS"
 r3 = "slavery"
 r4 = "NICONICOMUSICPARTY2015"
 r5 = "MIKUSIEMPREGANA"
-
+#alch me voy a petateear en cualquier momento
 #ALI DIOS PUEDES LEER ESTO
 def si1():
     script.config(text='Empecemos :)')
