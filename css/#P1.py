@@ -8,7 +8,7 @@ r3 = "slavery"
 r4 = "NICONICOMUSICPARTY2015"
 r5 = "MIKUSIEMPREGANA"
 
-
+#ALI DIOS PUEDES LEER ESTO
 def si1():
     script.config(text='Empecemos :)')
     btnSI.pack_forget()
