@@ -19,7 +19,6 @@ limSup = 50
 t = 'el número está entre {} y {}.'
 def p1():
     global r1_c
-    print(r1_c)
     r1_c = r1_c + 1
     print(r1_c)
     if sub_c == 1:
@@ -64,9 +63,7 @@ r2_c = 0
 
 def p2():
     global r2_c
-    print(r2_c)
     r2_c = r2_c + 1
-    print(r2_c)
     if sub_c == 3:
         btnOK.pack_forget()
         entry.delete(0, END)
