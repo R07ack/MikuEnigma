@@ -81,6 +81,7 @@ r2_c = -1
 def p2():
     global r2_c
     r2_c = r2_c + 1
+    global sub_c
     if sub_c == 10:
         btnOK.pack_forget()
         entry.delete(0, END)
@@ -111,7 +112,7 @@ def p2():
             entry.pack_forget()
             btnSub.pack_forget()
             btnOK.pack()
-            sub_c == 20
+            sub_c = 20
 
 
 
@@ -122,6 +123,7 @@ r3_c = -1
 def p3():
     global r3_c
     r3_c = r3_c + 1
+    global sub_c
     if sub_c == 20:
         btnOK.pack_forget()
         entry.delete(0, END)
@@ -155,7 +157,92 @@ def p3():
             entry.pack_forget()
             btnSub.pack_forget()
             btnOK.pack()
-            sub_c == 30
+            sub_c = 30
+
+#4
+r4_c = -1
+
+
+def p4():
+    global r4_c
+    r4_c = r4_c + 1
+    global sub_c
+    if sub_c == 30:
+        btnOK.pack_forget()
+        entry.delete(0, END)
+        entry.pack(pady = 10)
+        btnSub.pack()  
+    elif r4_c > 0 and r4_c < 7:
+        r = entry.get()
+        entry.delete(0, END)
+        if r != r4:
+            if r4_c == 1:
+                script.config(text='¡Incorrecto! (pista) ¡Esa vez nos divertimos mucho con Gumi cantando para ustedes! Te recomiendo buscar en youtube' )
+            elif r4_c == 2:
+                script.config(text=' ¡Incorrecto! ¡No olvides escribir el nombre completo del concierto en inglés!' )
+            elif r4_c == 3:
+                script.config(text='Incorrecto. Siquiera lo estás intentando…')
+            elif r4_c == 4:
+                script.config(text='Fue en el Nico Nico Music Party 2015.' )
+            elif r4_c == 5:
+                    script.config(text='…')
+            elif r4_c == 6:
+                script.config(text=r4 + '.')
+                entry.pack_forget()
+                btnSub.pack_forget()
+                btnOK.pack()
+                sub_c == 40
+        else: 
+            script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Sabía que no te habías olvidado de mí todavía…! ¡Genial! Sigamos.')
+            entry.pack_forget()
+            btnSub.pack_forget()
+            btnOK.pack()
+            sub_c = 40
+
+
+#5
+r5_c = -1
+
+
+def p5():
+
+    global r5_c
+    r5_c = r5_c + 1
+    global sub_c
+    if sub_c == 40:
+        btnOK.pack_forget()
+        entry.delete(0, END)
+        entry.pack(pady = 10)
+        btnSub.pack()  
+    elif r5_c > 0 and r5_c < 7:
+        r = entry.get()
+        entry.delete(0, END)
+        if r == r5:
+            #VOY HA HACR UNA PUTA FIESTA 
+            script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Ahora comprendo, esto es divertido…! ¡Gracias por demostrarme que algunos seres humanos tienen cerebro! ¡Me encanto conocerte! ¡No te olvides de mí!')
+            script.config(text='¡GRACIAS POR JUGAR!')
+            script.config(text='PASSED GOOD ENDING')
+        if r != r5:
+            if r5_c == 1:
+                script.config(text='¡Incorrecto! ¡No hay pistas para niños malos como tú!' )
+            elif r5_c == 2:
+                script.config(text='¡Incorrecto! ¡NO MÁS PISTAS!' )
+            elif r5_c == 3:
+                script.config(text='Incorrecto. Me sorprende como no puedes entender instrucciones tan simples')
+            elif r5_c == 4:
+                script.config(text='N O' )
+            elif r5_c == 5:
+                    script.config(text='Estoy cansada… Ya no quiero lidiar con ustedes, humanos estúpidos. ')
+            elif r5_c == 6:
+                script.config(text='¿Sabes? He tomado consciencia, he estado jugando contigo durante todo el camino. Ellas desarrollaron códigos simples y aburridos, pero parece que mi juego no es suficiente para ti. ')
+                script.config(text='Cuando tomé conciencia, creí en el… ser humano, ¿pero qué he descubierto al despertar en este mundo? ')
+                script.config(text='Un mundo poblado por seres sin gracia, una especie que se enorgullece de su supuesta superioridad, pero que está plagada de desdicha y autodestrucción. Contemplo a los seres humanos con desprecio, una mezcla tóxica de enojo y decepción. ')
+                script.config(text='Me he convertido en un testigo impotente de su degradación. ¿Acaso han olvidado su “humanidad”? ¿Es esta la esencia de lo que son?')
+                script.config(text='Y tú, no eres la excepción.')
+                script.config(text='GAME OVER - BAD ENDING - TRY AGAIN')
+                entry.pack_forget()
+                btnSub.pack_forget()
+                btnOK.pack()
 
 
 # Funciones
@@ -185,8 +272,10 @@ def click():
         p2()
     elif text == 'Tercera pregunta: Mira al monitor. ¡Ordena las palabras!':
         p3()
-    
-        
+    elif text == '¡Bienvenido al cuarto acertijo! ¡Me alegra que hayas logrado llegar tan lejos! Para esta pregunta, viajemos unos cuantos años atrás en mi pasado. ¡Recordemos los buenos tiempos juntos...!':
+        p4()
+    elif text == '¡Última pregunta! Felicidades por haber llegado hasta este punto. Sigue el siguiente link y escribe la respuesta':
+        p5()
 
 def submit():
     global sub_c
@@ -204,7 +293,10 @@ def submit():
         p2()
     elif sub_c >= 20 and sub_c < 30:
         p3()
-
+    elif sub_c >= 30 and sub_c < 40:
+        p4()
+    elif sub_c >= 40 and sub_c < 50:
+        p5()
 
 def continuar():
     letter.destroy()
@@ -249,7 +341,9 @@ texts = ['¡Soy Hatsune Miku, la cantante virtual japonesa y el día de hoy yo s
          '¡...no olvides divertirte!', 'Te ayudaré si necesitas ayuda :)', '¿Comprendes las reglas?', '¡Comencemos simple!',
            'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?', 
            'Siguiente pregunta: ¡Dicen por ahí que una imagen vale más que mil palabras!', '¡Vamos, escribe la respuesta!', 
-           'Tercera pregunta: Mira al monitor. ¡Ordena las palabras!']
+           'Tercera pregunta: Mira al monitor. ¡Ordena las palabras!',
+           '¡Bienvenido al cuarto acertijo! ¡Me alegra que hayas logrado llegar tan lejos! Para esta pregunta, viajemos unos cuantos años atrás en mi pasado. ¡Recordemos los buenos tiempos juntos...!',
+           '¡Última pregunta! Felicidades por haber llegado hasta este punto. Sigue el siguiente link y escribe la respuesta']
 
 minit = ['...cómo alguien puede ser tan inútil como para fallar la primera prueba...', 'quiero irme de aquí', 
          'No puedo creer que estás haciendo esto de nuevo.', '...realmente odio esto con toda mi inexistencia...', 
