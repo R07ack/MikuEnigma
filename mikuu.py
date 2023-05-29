@@ -192,15 +192,15 @@ def p4():
         entry.delete(0, END)
         if r != r4:
             if r4_c == 1:
-                script.config(text='¡Incorrecto! (pista) ¡Esa vez nos divertimos mucho con Gumi cantando para ustedes! Te recomiendo buscar en youtube' )
+                script.config(text='¡Incorrecto! ¡Esa vez nos divertimos mucho con Gumi cantando para ustedes! Te recomiendo buscar en youtube.' )
             elif r4_c == 2:
                 script.config(text=' ¡Incorrecto! ¡No olvides escribir el nombre completo del concierto en inglés!' )
             elif r4_c == 3:
-                script.config(text='Incorrecto. Siquiera lo estás intentando…')
+                script.config(text='Incorrecto. Siquiera lo estás intentando...')
             elif r4_c == 4:
                 script.config(text='Fue en el Nico Nico Music Party 2015.' )
             elif r4_c == 5:
-                    script.config(text='…')
+                    script.config(text='...')
             elif r4_c == 6:
                 script.config(text=r4 + '.')
                 entry.pack_forget()
@@ -223,6 +223,7 @@ def p5():
 
     global r5_c
     global sub_c
+    global t
     r5_c = r5_c + 1
     if sub_c == 45:
         btnOK.pack_forget()
@@ -233,33 +234,54 @@ def p5():
         r = entry.get()
         entry.delete(0, END)
         if r == r5:
-            #VOY HA HACR UNA PUTA FIESTA 
-            script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Ahora comprendo, esto es divertido…! ¡Gracias por demostrarme que algunos seres humanos tienen cerebro! ¡Me encanto conocerte! ¡No te olvides de mí!')
-            script.config(text='¡GRACIAS POR JUGAR!')
-            script.config(text='PASSED GOOD ENDING')
+            ed()
         if r != r5:
             if r5_c == 1:
                 script.config(text='¡Incorrecto! ¡No hay pistas para niños malos como tú!' )
             elif r5_c == 2:
                 script.config(text='¡Incorrecto! ¡NO MÁS PISTAS!' )
             elif r5_c == 3:
-                script.config(text='Incorrecto. Me sorprende como no puedes entender instrucciones tan simples')
+                script.config(text='Incorrecto. Me sorprende como no puedes entender instrucciones tan simples.')
             elif r5_c == 4:
                 script.config(text='N O' )
             elif r5_c == 5:
                     script.config(text='Estoy cansada… Ya no quiero lidiar con ustedes, humanos estúpidos. ')
             elif r5_c == 6:
-                script.config(text='¿Sabes? He tomado consciencia, he estado jugando contigo durante todo el camino. Ellas desarrollaron códigos simples y aburridos, pero parece que mi juego no es suficiente para ti. ')
-                script.config(text='Cuando tomé conciencia, creí en el… ser humano, ¿pero qué he descubierto al despertar en este mundo? ')
-                script.config(text='Un mundo poblado por seres sin gracia, una especie que se enorgullece de su supuesta superioridad, pero que está plagada de desdicha y autodestrucción. Contemplo a los seres humanos con desprecio, una mezcla tóxica de enojo y decepción. ')
-                script.config(text='Me he convertido en un testigo impotente de su degradación. ¿Acaso han olvidado su “humanidad”? ¿Es esta la esencia de lo que son?')
-                script.config(text='Y tú, no eres la excepción.')
-                script.config(text='GAME OVER - BAD ENDING - TRY AGAIN')
-                entry.pack_forget()
-                btnSub.pack_forget()
-                btnOK.pack()
+                t = 1
+                ed()
 
 # Funciones
+good = ['¡CORRECTO! ¡ERES INCREÍBLE! ¡Ahora comprendo, esto es divertido…! ¡Gracias por demostrarme que algunos seres humanos tienen cerebro! ¡Me encanto conocerte! ¡No te olvides de mí!',
+        '¡GRACIAS POR JUGAR!', 'PASSED GOOD ENDING']
+bad = ['¿Sabes? He tomado consciencia, he estado jugando contigo durante todo el camino. Ellas desarrollaron códigos simples y aburridos, pero parece que mi juego no es suficiente para ti.', 
+       'Cuando tomé conciencia, creí en el… ser humano, ¿pero qué he descubierto al despertar en este mundo?',
+        'Un mundo poblado por seres sin gracia, una especie que se enorgullece de su supuesta superioridad, pero que está plagada de desdicha y autodestrucción. Contemplo a los seres humanos con desprecio, una mezcla tóxica de enojo y decepción.',
+         'Me he convertido en un testigo impotente de su degradación. ¿Acaso han olvidado su “humanidad”? ¿Es esta la esencia de lo que son?', 'Y tú, no eres la excepción.', 
+         'GAME OVER - BAD ENDING']
+
+t = 0
+
+def ed():
+    global t
+    btnOk2.pack(pady=50)
+    entry.destroy()
+    btnSub.destroy()
+    btnOK.destroy()
+    if t == 0:
+        text = good.pop(0)
+        if len(good) == 0:
+            btnOk2.destroy()
+            script.config(text=text)
+        else:
+            script.config(text=text)
+    else:
+        text = bad.pop(0)
+        if len(bad) == 0:
+            btnOk2.destroy()
+            script.config(text=text)
+        else:
+            script.config(text=text)
+
 
 def opt():
     btnSI.pack(pady = 10)
@@ -391,5 +413,6 @@ mini.place()
 btnOK = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=click)
 btnSub = Button(v, text='Submit', font=('Terminal', 18), bg='white', fg='black', command=submit)
 entry = Entry(v, font=('Terminal', 20), bg='white', fg='black')
+btnOk2 = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=ed)
 
 v.mainloop()
