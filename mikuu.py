@@ -2,7 +2,7 @@ import random
 from tkinter import *
 
 si_c = 0
-sub_c = -1
+sub_c = 0
 
 r1 = random.randint(0,51)
 print(r1)
@@ -22,13 +22,14 @@ r1_c = -1
 limInf = 0
 limSup = 50
 t = 'el número está entre {} y {}.'
+notN = ['¿Creo haber pedido un número entre 0 y 50?', 'Sólo números entre 0 y 50...', 'No insistas.']
 
 
 def p1():
     global r1_c
+    global sub_c
     r1_c = r1_c + 1
     mini.place_forget()
-    global sub_c
     if sub_c == 1:
         btnOK.pack_forget()
         entry.delete(0, END)
@@ -37,7 +38,18 @@ def p1():
     elif r1_c > 0 and r1_c < 8:
         r = entry.get()
         entry.delete(0, END)
-        if int(r) != r1:
+        if r.isnumeric() == False or int(r) > 50 or int(r) < 0:
+            if len(notN) == 0:
+                script.config(text='...siguiente pregunta.')
+                entry.pack_forget()
+                btnSub.pack_forget()
+                btnOK.pack()
+                sub_c = 15
+            else:
+                text = notN.pop(0)
+                script.config(text=text)
+                r1_c = r1_c - 1
+        elif int(r) != r1:
             global limInf
             global limSup
             if int(r) > r1:
@@ -54,7 +66,7 @@ def p1():
                 script.config(text='...' + t.format(limInf, limSup))
             elif r1_c == 5:
                 mini.config(text=minit[0])
-                mini.place(x=280, y=170)
+                mini.place(x=230, y=150)
                 script.config(text='La respuesta es ' + str(r1) + '.')
             elif r1_c == 6:
                 script.config(text='Solo coloca la respuesta...')
@@ -63,13 +75,13 @@ def p1():
                 entry.pack_forget()
                 btnSub.pack_forget()
                 btnOK.pack()
-                sub_c = 10
+                sub_c = 15
         else: 
             script.config(text=' ¡Correcto! increíble, genial! Sigamos :)')
             entry.pack_forget()
             btnSub.pack_forget()
             btnOK.pack()
-            sub_c = 10
+            sub_c = 15
 
 
 
@@ -80,9 +92,9 @@ r2_c = -1
 
 def p2():
     global r2_c
-    r2_c = r2_c + 1
     global sub_c
-    if sub_c == 10:
+    r2_c = r2_c + 1
+    if sub_c == 15:
         btnOK.pack_forget()
         entry.delete(0, END)
         entry.pack(pady = 10)
@@ -106,13 +118,13 @@ def p2():
                 entry.pack_forget()
                 btnSub.pack_forget()
                 btnOK.pack()
-                sub_c == 20
+                sub_c = 25
         else: 
             script.config(text='¡Correcto! ¡Eres INCREÍBLE! ¡Genial! Sigamos.')
             entry.pack_forget()
             btnSub.pack_forget()
             btnOK.pack()
-            sub_c = 20
+            sub_c = 25
 
 
 
@@ -122,9 +134,9 @@ r3_c = -1
 
 def p3():
     global r3_c
-    r3_c = r3_c + 1
     global sub_c
-    if sub_c == 20:
+    r3_c = r3_c + 1
+    if sub_c == 25:
         btnOK.pack_forget()
         entry.delete(0, END)
         entry.pack(pady = 10)
@@ -151,13 +163,16 @@ def p3():
                 entry.pack_forget()
                 btnSub.pack_forget()
                 btnOK.pack()
-                sub_c == 30
+                sub_c = 35
         else: 
             script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Nunca había conocido a un ser humano tan inteligente! ¡Genial! Sigamos.')
             entry.pack_forget()
             btnSub.pack_forget()
             btnOK.pack()
-            sub_c = 30
+            sub_c = 35
+
+
+
 
 #4
 r4_c = -1
@@ -165,9 +180,9 @@ r4_c = -1
 
 def p4():
     global r4_c
-    r4_c = r4_c + 1
     global sub_c
-    if sub_c == 30:
+    r4_c = r4_c + 1
+    if sub_c == 35:
         btnOK.pack_forget()
         entry.delete(0, END)
         entry.pack(pady = 10)
@@ -191,13 +206,13 @@ def p4():
                 entry.pack_forget()
                 btnSub.pack_forget()
                 btnOK.pack()
-                sub_c == 40
+                sub_c = 45
         else: 
             script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Sabía que no te habías olvidado de mí todavía…! ¡Genial! Sigamos.')
             entry.pack_forget()
             btnSub.pack_forget()
             btnOK.pack()
-            sub_c = 40
+            sub_c = 45
 
 
 #5
@@ -207,9 +222,9 @@ r5_c = -1
 def p5():
 
     global r5_c
-    r5_c = r5_c + 1
     global sub_c
-    if sub_c == 40:
+    r5_c = r5_c + 1
+    if sub_c == 45:
         btnOK.pack_forget()
         entry.delete(0, END)
         entry.pack(pady = 10)
@@ -244,7 +259,6 @@ def p5():
                 btnSub.pack_forget()
                 btnOK.pack()
 
-
 # Funciones
 
 def opt():
@@ -276,27 +290,29 @@ def click():
         p4()
     elif text == '¡Última pregunta! Felicidades por haber llegado hasta este punto. Sigue el siguiente link y escribe la respuesta':
         p5()
+    
+        
 
 def submit():
     global sub_c
     sub_c = sub_c + 1
-    if sub_c == 0:
+    if sub_c == 1:
         nombre = entry.get()
         entry.pack_forget()
         btnSub.pack_forget()
         script.config(text='¡Hola, '+nombre+'!')
         btnOK.pack()
-        sub_c = sub_c + 1
-    elif sub_c >= 1 and sub_c < 10:
+    elif sub_c >= 1 and sub_c < 15:
         p1()
-    elif sub_c >= 10 and sub_c < 20:
+    elif sub_c >= 15 and sub_c < 25:
         p2()
-    elif sub_c >= 20 and sub_c < 30:
+    elif sub_c >= 25 and sub_c < 35:
         p3()
-    elif sub_c >= 30 and sub_c < 40:
+    elif sub_c >= 35 and sub_c < 45:
         p4()
-    elif sub_c >= 40 and sub_c < 50:
+    elif sub_c >= 45 and sub_c < 55:
         p5()
+
 
 def continuar():
     letter.destroy()
