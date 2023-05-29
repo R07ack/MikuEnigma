@@ -1,85 +1,173 @@
-#P1
 import random
 from tkinter import *
-#RESPUESTAS
+
+si_c = 0
+sub_c = 0
+
 r1 = random.randint(0,51)
-r2 = "PATOS"
-r3 = "slavery"
-r4 = "NICONICOMUSICPARTY2015"
-r5 = "MIKUSIEMPREGANA"
-#alch me voy a petateear en cualquier momento
-#ALI DIOS PUEDES LEER ESTO
-def si1():
-    script.config(text='Empecemos :)')
-    btnSI.pack_forget()
-    btnNO.place_forget()
-    
-    
-    
-    
-    
-    
-#JASHSJSJSKJAS
+print(r1)
+r2 = 'PATOS'
+r3 = 'SLAVERY'
+r4 = 'NICONICOMUSICPARTY2015'
+r5 = 'MIKUSIEMPREGANA15'
+
+# Preguntas
+# 1
+r1_c = 0
+limInf = 0
+limSup = 50
+t = 'el número está entre {} y {}.'
+def p1():
+    global r1_c
+    print(r1_c)
+    r1_c = r1_c + 1
+    print(r1_c)
+    if sub_c == 1:
+        btnOK.pack_forget()
+        entry.delete(0, END)
+        entry.pack(pady = 10)
+        btnSub.pack()
+    elif r1_c > 0 and r1_c < 9:
+        r = entry.get()
+        entry.delete(0, END)
+        if int(r) != r1:
+            global limInf
+            global limSup
+            if int(r) > r1:
+                limSup = int(r)
+            else:
+                limInf = int(r)
+            if r1_c == 2:
+                script.config(text='¡Incorrecto! Pero no te preocupes, ' + t.format(limInf, limSup))
+            elif r1_c == 3:
+                script.config(text='¡Vamos! No es tan difícil, ' + t.format(limInf, limSup))
+            elif r1_c == 4:
+                script.config(text='¡Tú puedes! ' + t.format(limInf, limSup).capitalize())
+            elif r1_c == 5:
+                script.config(text='...' + t.format(limInf, limSup))
+            elif r1_c == 6:
+                script.config(text='La respuesta es ' + str(r1) + '.')
+            elif r1_c == 7:
+                script.config(text='Solo coloca la respuesta...')
+            elif r1_c == 8:
+                script.config(text=str(r1) + '.')
+                entry.pack_forget()
+                btnSub.pack_forget()
+                btnOK.pack()
+        else: 
+            script.config(text=' ¡Correcto! increíble, genial! Sigamos :)')
+            entry.pack_forget()
+            btnSub.pack_forget()
+            btnOK.pack()
+# 2
+r2_c = 0
+
+def p2():
+    global r2_c
+    print(r2_c)
+    r2_c = r2_c + 1
+    print(r2_c)
+    if sub_c == 3:
+        btnOK.pack_forget()
+        entry.delete(0, END)
+        entry.pack(pady = 10)
+        btnSub.pack()
+    elif r2_c > 0 and r2_c < 8:
+        a = entry.get()
+        entry.delete(0, END)
+        if a != r2:
+            if r2_c == 2:
+                script.config(text=' ¡Incorrecto! Creo que algo cambió en la imagen.')
+            elif r2_c == 3:
+                script.config(text=' ¡Incorrecto! No puedo creer que estás haciendo esto de nuevo. ¡Inténtalo de nuevo!')
+            elif r2_c == 4:
+                script.config(text=' ¡Incorrecto! ES… amarillo.')
+            elif r2_c == 5:
+                script.config(text='…no puede ser.')
+            elif r2_c == 6:
+                script.config(text=' realmente odio esto con toda mi inexistencia… La respuesta es patos')
+            elif r2_c == 7:
+                script.config(text=' Es PATOS …dónde puedes perderte.')
+                entry.pack_forget()
+                btnSub.pack_forget()
+                btnOK.pack()
+        else: 
+            script.config(text=' ¡Correcto! ¡Eres INCREÍBLE! ¡Genial! Sigamos. ')
+            entry.pack_forget()
+            btnSub.pack_forget()
+            btnOK.pack()
 
 
-
-
-
-
+# Funciones
 
 def opt():
-    btnSI.pack(pady=10)
-    btnNO.place(x=545,y=330)
+    btnSI.pack(pady = 10)
+    btnNO.place(x = 505, y = 360)
 
-def entry1():
+
+def entryy():
     entry.pack()
-    btn2.pack(pady=10)
-    btn1.pack_forget()
+    btnSub.pack(pady=10)
+    btnOK.pack_forget()
+
 
 def click():
     text =texts.pop(0)
     script.config(text=text)
     if text == '¿Empezamos por tu nombre?':
-        entry1()
-    if text == '¿Comprendes las reglas?':
+        entryy()
+    elif text == '¿Comprendes las reglas?':
         opt()
-        btn1.pack_forget()
-        btnSI.config(command=si1)
+        btnOK.pack_forget()
+    elif text == 'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?':
+        p1()
+    elif text == 'Siguiente pregunta: ¡Dicen por ahí que una imagen vale más que mil palabras!':
+        p2()
+        
 
 def submit():
-    global nombre
-    nombre = entry.get()
-    entry.destroy()
-    btn2.destroy()
-    script.config(text='¡Hola, '+nombre+'!')
-    btn1.pack()
-
-def respuesta2():
-    global r2_user
-    r2_user = entry.get()
-    if r2_user==r2:
-        entry.destroy()
-        btn2.destroy()
+    global sub_c
+    sub_c = sub_c + 1
+    if sub_c == 1:
+        nombre = entry.get()
+        entry.pack_forget()
+        btnSub.pack_forget()
+        script.config(text='¡Hola, '+nombre+'!')
+        btnOK.pack()
+    if sub_c == 2:
+        p1()
     else:
-        script.config(text='¡Incorrecto! Creo que algo cambió en la imagen.')
+        p2()
+
 
 def continuar():
     letter.destroy()
     btnC.destroy()
     script.pack(pady=100)
-    btn1.pack()
+    btnOK.pack()
+
 
 def si():
-    qstn.destroy()
-    btnSI.pack_forget()
-    btnNO.place_forget()
-    letter.pack(padx=10, pady=60)
-    btnC.pack(padx=10, pady=20)
+    global si_c
+    si_c = si_c + 1
+    if si_c == 1:
+        qstn.destroy()
+        btnSI.pack_forget()
+        btnNO.place_forget()
+        letter.pack(padx=10, pady=60)
+        btnC.pack(padx=10, pady=20)
+    if si_c == 2:
+        script.config(text='Empecemos :)')
+        btnSI.pack_forget()
+        btnNO.place_forget()
+        btnOK.pack()
+
 
 def change(event):
     x = random.randint(1,1150)
     y = random.randint(50,450)
     btnNO.place(x=x, y=y)
+
 
 text = '''¡Bienvenidos! 
 
@@ -93,19 +181,21 @@ texts = ['''¡Soy Hatsune Miku, la cantante virtual japonesa y
          "¿Empezamos por tu nombre?", '¡Las reglas son simples!',
          'Deberás resolver cinco enigmas sencillos y escribir tus respuestas.',
          '¡Recuerda que los niños buenos no hacen trampa!', 'Por último y más importante...',
-         '¡,,,no olvides divertirte!', 'Te ayudaré si necesitas ayuda :)', '¿Comprendes las reglas?', ]
+         '¡...no olvides divertirte!', 'Te ayudaré si necesitas ayuda :)', '¿Comprendes las reglas?', '¡Comencemos simple!',
+           'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?', 
+           'Siguiente pregunta: ¡Dicen por ahí que una imagen vale más que mil palabras!']
 
 v = Tk()
 
 v.title("MIKU ENIGMA")
 v.geometry("1120x580")
-v.resizable(0,0)
+v.resizable(1,1)
 v.configure(background='#000000')
 
 qstn = Label(v,text="¿Quieres jugar?", bg='#000000', fg='white', width=0, font=("Terminal", 35))
 qstn.pack(padx=10, pady=100)
 btnSI = Button(v, text="SI", width=5, height=1, font=("Terminal", 28), bg='#FFFFFF', fg='black', command=si)
-btnSI.pack(padx=10, pady=0)
+btnSI.pack(padx=10)
 btnNO = Button(v, text="NO", width=5, height=1, font=("Terminal", 28), bg='#FFFFFF', fg='black')
 btnNO.place(x=505, y=360)
 btnNO.bind('<Enter>', change)
@@ -116,8 +206,8 @@ btnC = Button(v, text='Continuar', fg='black', bg='white', font=('Terminal', 18)
 
 
 script =Label(v, text='こんにちわぁ！！！', font=('Terminal', 20), bg='black', fg='white')
-btn1 = Button(v, text='Ok', font=('Terminal', 18), command=click, bg='white', fg='black')
-btn2 = Button(v, text='Submit', font=('Terminal', 18), command=submit, bg='white', fg='black')
+btnOK = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=click)
+btnSub = Button(v, text='Submit', font=('Terminal', 18), bg='white', fg='black', command=submit)
 entry = Entry(v, font=('Terminal', 20), bg='white', fg='black')
 
 v.mainloop()
