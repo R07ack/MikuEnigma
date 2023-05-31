@@ -28,3 +28,21 @@ while count < 15:
     time.sleep(0.1)
 
 v.mainloop()
+-------------------------------------------------------------------------------------
+def glitch():
+    w = v.winfo_screenwidth()
+    h = v.winfo_screenheight()
+    c = '#{:06x}'.format(random.randint(0, 0xFFFFFF))
+    ca.create_rectangle(0, 0, w, h, fill=c)
+    v.update()
+v = tk.Tk()
+v.title("Glitch Effect")
+v.attributes('-fullscreen', True)
+ca = tk.Canvas(v)
+ca.pack(fill=tk.BOTH, expand=True)
+sta = time.time()
+while time.time() - sta < 0.4:
+    glitch()
+    v.update()
+v.after(20, v.destroy)
+v.mainloop()
