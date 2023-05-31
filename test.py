@@ -1,23 +1,30 @@
+import tkinter as tk
 import random
-from tkinter import *
+import time
 
-c = 0
+def crearpop():
+    p = tk.Toplevel()
+    p.title("ER ROR")
+    p.geometry("200x100")
+    ancho = p.winfo_screenwidth()
+    alto = p.winfo_screenheight()
+    x = random.randint(0, ancho - 200)
+    y = random.randint(0, alto - 100)
+    p.geometry(f"200x100+{x}+{y}")
+    l = tk.Label(p, text="Ca N  uu uu HEarrr ME??")
+    l.pack(pady=20)
+    p.after(2000, p.destroy)
 
-def continuar():
-    global c
-    c = c + 1
-    print(c)
+v = tk.Tk()
+v.title("Pop-ups")
+v.geometry("300x200")
 
+count = 0
 
-v = Tk()
-
-v.title("MIKU ENIGMA")
-v.geometry("1200x500")
-v.resizable(1,1)
-v.configure(background='#000000')
-
-
-btnC = Button(v, text='Continuar', fg='black', bg='white', font=('Terminal', 18), command=continuar)
-btnC.pack()
+while count < 15:
+    crearpop()
+    count += 1
+    v.update()
+    time.sleep(0.1)
 
 v.mainloop()
