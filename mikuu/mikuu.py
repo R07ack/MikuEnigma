@@ -1,10 +1,11 @@
 import random
 from tkinter import *
+from PIL import Image, ImageTk
 
 si_c = 0
 sub_c = 0
 
-r1 = random.randint(0,51)
+r1 = random.randint(0,50)
 print(r1)
 r2 = 'PATOS'
 r3 = 'SLAVERY'
@@ -70,6 +71,8 @@ def p1():
                 script.config(text='La respuesta es ' + str(r1) + '.')
             elif r1_c == 6:
                 script.config(text='Solo coloca la respuesta...')
+                mini.config(text=minit[1])
+                mini.place(x=495, y=360)
             elif r1_c == 7:
                 script.config(text=str(r1) + '.')
                 entry.pack_forget()
@@ -94,6 +97,7 @@ def p2():
     global r2_c
     global sub_c
     r2_c = r2_c + 1
+    mini.place_forget()
     if sub_c == 15:
         btnOK.place_forget()
         entry.delete(0, END)
@@ -102,19 +106,25 @@ def p2():
     elif r2_c > 0 and r2_c < 7:
         r = entry.get()
         entry.delete(0, END)
-        if r != r2:
+        if r.upper() != r2:
             if r2_c == 1:
                 script.config(text='¡Incorrecto! Creo que algo cambió en la imagen.' )
             elif r2_c == 2:
-                script.config(text='¡Incorrecto! ¡Inténtalo de nuevo!' )
+                script.config(text='''¡Incorrecto!                         ¡Inténtalo de nuevo!''')
+                mini.config(text=minit[2])
+                mini.place(x=240, y=360)
             elif r2_c == 3:
                 script.config(text='¡Incorrecto! ES… amarillo.')
             elif r2_c == 4:
                 script.config(text='...no puede ser.' )
             elif r2_c == 5:
-                script.config(text='La respuesta es ' + r2 +'.')
+                script.config(text='                         La respuesta es ' + r2 +'.')
+                mini.config(text=minit[3])
+                mini.place(x=50, y=360)
             elif r2_c == 6:
                 script.config(text='Es ' + r2 + '.')
+                mini.config(text=minit[4])
+                mini.place(x=200, y=360)
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
@@ -136,6 +146,7 @@ def p3():
     global r3_c
     global sub_c
     r3_c = r3_c + 1
+    mini.place_forget()
     if sub_c == 25:
         btnOK.place_forget()
         entry.delete(0, END)
@@ -152,7 +163,9 @@ def p3():
             elif r3_c == 3:
                 script.config(text='¡Incorrecto! “If Hypixel has taught me anything, it is that if you have a problem, the answer is slavery.”')
             elif r3_c == 4:
-                script.config(text='LA RESPUESTA ES SLAVERY.' )
+                script.config(text='                    LA RESPUESTA ES SLAVERY.' )
+                mini.config(text=minit[5])
+                mini.place(x=50, y=360)
             elif r3_c == 5:
                 if r == r3.lower():
                     script.config(text='E N   M A Y Ú S C U LA S.')
@@ -182,6 +195,7 @@ def p4():
     global r4_c
     global sub_c
     r4_c = r4_c + 1
+    mini.place_forget()
     if sub_c == 35:
         btnOK.place_forget()
         entry.delete(0, END)
@@ -224,6 +238,7 @@ def p5():
     global r5_c
     global sub_ce
     r5_c = r5_c + 1
+    mini.place_forget()
     if sub_c == 45:
         btnOK.place_forget()
         entry.delete(0, END)
@@ -242,15 +257,15 @@ def p5():
             elif r5_c == 3:
                 script.config(text='Incorrecto. Me sorprende como no puedes entender instrucciones tan simples.')
             elif r5_c == 4:
-                script.config(text='N O' )
+                script.config(text='N O .')
             elif r5_c == 5:
                     script.config(text='Estoy cansada… Ya no quiero lidiar con ustedes, humanos estúpidos. ')
             elif r5_c == 6:
                 ed()
 
 # Funciones
-good = ['¡CORRECTO! ¡ERES INCREÍBLE! ¡Ahora comprendo, esto es divertido…! ¡Gracias por demostrarme que algunos seres humanos tienen cerebro! ¡Me encanto conocerte! ¡No te olvides de mí!',
-        '¡GRACIAS POR JUGAR!', 'PASSED GOOD ENDING']
+good = ['¡CORRECTO! ¡Eres increíble! ¡Ahora comprendo, esto es divertido...! ¡Gracias por demostrarme que algunos seres humanos tienen cerebro, ', '¡Me encantó conocerte! ¡No te olvides de mí!',
+        '¡GRACIAS POR JUGAR!', 'PASSED - GOOD ENDING']
 bad = ['¿Sabes? He tomado consciencia, he estado jugando contigo durante todo el camino. Ellas desarrollaron códigos simples y aburridos, pero parece que mi juego no es suficiente para ti.', 
        'Cuando tomé conciencia, creí en el… ser humano, ¿pero qué he descubierto al despertar en este mundo?',
         'Un mundo poblado por seres sin gracia, una especie que se enorgullece de su supuesta superioridad, pero que está plagada de desdicha y autodestrucción. Contemplo a los seres humanos con desprecio, una mezcla tóxica de enojo y decepción.',
@@ -260,7 +275,7 @@ bad = ['¿Sabes? He tomado consciencia, he estado jugando contigo durante todo e
 
 def ed():
     R = r1_c + r2_c + r3_c + r4_c + r5_c
-    btnOK2.place(x=970, y=450)
+    btnOK2.place(x=970, y=500)
     entry.destroy()
     btnSub.destroy()
     btnOK.destroy()
@@ -268,14 +283,16 @@ def ed():
         text = good.pop(0)
         if len(good) == 0:
             btnOK2.destroy()
-            script.config(text=text)
+            script.place(x=280, y=230)
+            script.config(text=text, font=('Terminal', 30))
         else:
             script.config(text=text)
     else:
         text = bad.pop(0)
         if len(bad) == 0:
             btnOK2.destroy()
-            script.config(text=text)
+            script.place(x=230, y=230)
+            script.config(text=text, font=('Terminal', 30))
         else:
             script.config(text=text)
 
@@ -293,7 +310,7 @@ def entryy():
 
 def click():
     text =texts.pop(0)
-    script.config(text=text)
+    script.config(text=text, font=('Terminal', 20))
     if text == '¿Empezamos por tu nombre?':
         entryy()
     elif text == '¿Comprendes las reglas?':
@@ -309,8 +326,7 @@ def click():
         p4()
     elif text == 'Sigue el siguiente link y escribe la respuesta':
         p5()
-    
-        
+      
 
 def submit():
     global sub_c
@@ -319,7 +335,7 @@ def submit():
         nombre = entry.get()
         entry.pack_forget()
         btnSub.place_forget()
-        script.config(text='¡Hola, '+nombre+'!')
+        script.config(text='¡Hola, '+ nombre +'!')
         btnOK.place(x=970, y=450)
     elif sub_c >= 1 and sub_c < 15:
         p1()
@@ -333,9 +349,10 @@ def submit():
         p5()
 
 
-def continuar():
-    letter.destroy()
+def comenzar():
+    carta.destroy()
     btnC.destroy()
+    ntpd.destroy()
     script.place(x=50, y=350)
     btnOK.place(x=970, y=450)
 
@@ -347,8 +364,9 @@ def si():
         qstn.destroy()
         btnSI.pack_forget()
         btnNO.place_forget()
-        letter.pack(padx=10, pady=60)
-        btnC.pack(padx=10, pady=20)
+        ntpd.place(x=115, y=40)
+        carta.place(x=155, y=150)
+        btnC.place(x=500, y=430)
     if si_c == 2:
         script.config(text='Empecemos :)')
         btnSI.place_forget()
@@ -362,12 +380,11 @@ def change(event):
     btnNO.place(x=x, y=y)
 
 
-text = '''¡Bienvenidos! 
+text = '''¡Bienvenidos!
 
-¡Somos Ali y Rack, y te invitamos cordialmente a jugar nuestro juego! 
-¡Deberás resolver cinco acertijos con la ayuda de nuestro host! Ahora 
-los dejamos con ella, quien los guiará y ayudará durante todo el 
-proceso :)'''
+¡Somos Ali y Rack, y te invitamos cordialmente a jugar nuestro juego! ¡Deberás resolver cinco acertijos con la ayuda de nuestro host! 
+
+Ahora los dejamos con ella, quien los guiará y ayudará durante todo el proceso :)'''
 
 texts = ['¡Soy Hatsune Miku, la cantante virtual japonesa y el día de hoy yo seré su guía a través de este enigmático juego!', 
          ' 仲良くしましょうね！', "¿Empezamos por tu nombre?", '¡Las reglas son simples!',
@@ -402,15 +419,20 @@ btnNO.place(x=505, y=360)
 btnNO.bind('<Enter>', change)
 btnNO.bind('<Button-1>', change)
 
-letter = Label(v,text=text, font=("Terminal", 20), bg='black', fg='white')
-btnC = Button(v, text='Continuar', fg='black', bg='white', font=('Terminal', 18), command=continuar)
+imgNtpd = Image.open(r"C:\Users\Alina Mollinedo\OneDrive\Documentos\Alina\Cato\SIS = 111\MikuEnigma\Textures\Notepad.png")
+imageNtpd = imgNtpd.resize((889, 500), Image.LANCZOS)
+notepad = ImageTk.PhotoImage(imageNtpd)
+
+ntpd = Label(v, image=notepad)
+carta = Label(v,text=text, font=("Terminal", 20), bg='white', fg='#08113b', wraplength=840, justify=LEFT)
+btnC = Button(v, text='Comenzar', fg='black', bg='white', font=('Terminal', 18), command=comenzar, height=2, width=10)
 
 script = Label(v, text='こんにちわぁ！！！', font=('Terminal', 20), bg='black', fg='white', wraplength=1020, justify=LEFT)
 btnOK = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=click, width=5, height=2)
 btnSub = Button(v, text='Submit', font=('Terminal', 18), bg='white', fg='black', command=submit, height=2, width=8)
 entry = Entry(v, font=('Terminal', 20), bg='white', fg='black')
-btnOK2 = Button(v, text='...', font=('Terminal', 18), bg='white', fg='black', command=ed, width=5, height=2)
-mini = Label(v, font=('Terminal', 15), bg='black', fg='white', wraplength=900)
+btnOK2 = Button(v, text='...', font=('Terminal', 18), bg='white', fg='black', command=ed, width=5, height=1)
+mini = Label(v, font=('Terminal', 11), bg='black', fg='white', wraplength=900)
 mini.place()
 
 v.mainloop()
