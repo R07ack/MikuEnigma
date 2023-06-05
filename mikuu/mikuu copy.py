@@ -79,7 +79,7 @@ def p1():
                     crearpop()
                     count += 1
                     w.update()
-                    time.sleep(0.1)
+                    time.sleep(0.07)
                 w.destroy()
             elif r1_c == 3:
                 script.config(text='¡Tú puedes! ' + txt.format(limInf, limSup).capitalize())
@@ -158,7 +158,7 @@ def p2():
                     y = random.randint(0, r.winfo_height() - image_height)
                     canvas.coords(image_id, x, y)
                     canvas.coords(text_id, x, y + image_height)
-                    r.after(10, move_objects)
+                    r.after(5, move_objects)
                 r = Toplevel()
                 r.title("RAL")
                 r.geometry("400x300")
@@ -171,7 +171,7 @@ def p2():
                 photo = ImageTk.PhotoImage(mg)
                 image_id = canvas.create_image(0, 0, image=photo, anchor='nw')
                 text_id = canvas.create_text(0, 0, text="I can see you", font=("Terminal", 14), fill="white", anchor='nw')
-                r.after(3000, r.destroy)
+                r.after(1000, r.destroy)
                 r.update()
                 move_objects()
                 r.mainloop()
@@ -430,15 +430,15 @@ def crearpop():
     p = Toplevel()
     p.title("ER ROR")
     p.geometry("200x100")
-    p.configure(bg="black")  # Cambiar el fondo a negro
+    p.configure(bg="black") 
     ancho = p.winfo_screenwidth()
     alto = p.winfo_screenheight()
     x = random.randint(0, ancho - 200)
     y = random.randint(0, alto - 100)
     p.geometry(f"200x100+{x}+{y}")
-    l = Label(p, text="CaN  uu uu\nHEarrr ME??".replace('v', 'w'), fg="white", bg="black", font="Terminal")  # Cambiar el texto a blanco, el fondo a negro y la fuente a Terminal
+    l = Label(p, text="CaN  uu uu\nHEarrr ME??".replace('v', 'w'), fg="white", bg="black", font="Terminal") 
     l.pack(pady=20)
-    p.after(2000, p.destroy)
+    p.after(200, p.destroy)
 
 
 
