@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 
 si_c = 0
 sub_c = 0
+mikku_c = -1
 
 r1 = random.randint(0,50)
 print(r1)
@@ -45,10 +46,12 @@ def p1():
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                mikku(1)
                 sub_c = 15
             else:
                 text = notN.pop(0)
                 script.config(text=text)
+                mikku(1)
                 r1_c = r1_c - 1
         elif int(r) != r1:
             global limInf
@@ -59,31 +62,40 @@ def p1():
                 limInf = int(r)
             if r1_c == 1:
                 script.config(text='¡Incorrecto! Pero no te preocupes, ' + t.format(limInf, limSup))
+                mikku(1)
             elif r1_c == 2:
                 script.config(text='¡Vamos! No es tan difícil, ' + t.format(limInf, limSup))
+                mikku(1)
             elif r1_c == 3:
                 script.config(text='¡Tú puedes! ' + t.format(limInf, limSup).capitalize())
+                mikku(1)
             elif r1_c == 4:
                 script.config(text='...' + t.format(limInf, limSup))
+                mikku(1)
             elif r1_c == 5:
                 mini.config(text=minit[0])
                 mini.place(x=50, y=400)
                 script.config(text='La respuesta es ' + str(r1) + '.')
+                mikku(1)
             elif r1_c == 6:
                 script.config(text='Solo coloca la respuesta...')
                 mini.config(text=minit[1])
-                mini.place(x=495, y=360)
+                mini.place(x=495, y=370)
+                mikku(1)
             elif r1_c == 7:
                 script.config(text=str(r1) + '.')
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                mikku(1)
                 sub_c = 15
+
         else: 
             script.config(text=' ¡Correcto! increíble, genial! Sigamos :)')
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            mikku(0)
             sub_c = 15
 
 
@@ -109,31 +121,38 @@ def p2():
         if r.upper() != r2:
             if r2_c == 1:
                 script.config(text='¡Incorrecto! Creo que algo cambió en la imagen.' )
+                mikku(1)
             elif r2_c == 2:
                 script.config(text='''¡Incorrecto!                         ¡Inténtalo de nuevo!''')
                 mini.config(text=minit[2])
-                mini.place(x=240, y=360)
+                mini.place(x=240, y=370)
+                mikku(1)
             elif r2_c == 3:
                 script.config(text='¡Incorrecto! ES… amarillo.')
+                mikku(1)
             elif r2_c == 4:
                 script.config(text='...no puede ser.' )
+                mikku(1)
             elif r2_c == 5:
                 script.config(text='                         La respuesta es ' + r2 +'.')
                 mini.config(text=minit[3])
-                mini.place(x=50, y=360)
+                mini.place(x=50, y=370)
+                mikku(1)
             elif r2_c == 6:
                 script.config(text='Es ' + r2 + '.')
                 mini.config(text=minit[4])
-                mini.place(x=200, y=360)
+                mini.place(x=200, y=370)
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                mikku(1)
                 sub_c = 25
         else: 
             script.config(text='¡Correcto! ¡Eres INCREÍBLE! ¡Genial! Sigamos.')
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            mikku(0)
             sub_c = 25
 
 
@@ -158,30 +177,38 @@ def p3():
         if r != r3:
             if r3_c == 1:
                 script.config(text='Incorrecto! Te ayudo con una pista: ¡Si tu lavabo está arruinado, llamas a un plomero; si tu necesitas construir una casa, llamas a un arquitecto, y si necesitas derrocar una dictadura llamas a un anarquista!' )
+                mikku(1)
             elif r3_c == 2:
                 script.config(text='¡Incorrecto! ¿Sabes? “Tecno es el símbolo de victoria”. ¡Inténtalo de nuevo!' )
+                mikku(1)
             elif r3_c == 3:
                 script.config(text='¡Incorrecto! “If Hypixel has taught me anything, it is that if you have a problem, the answer is slavery.”')
+                mikku(1)
             elif r3_c == 4:
                 script.config(text='                    LA RESPUESTA ES SLAVERY.' )
+                mikku(1)
                 mini.config(text=minit[5])
-                mini.place(x=50, y=360)
+                mini.place(x=50, y=370)
             elif r3_c == 5:
                 if r == r3.lower():
                     script.config(text='E N   M A Y Ú S C U LA S.')
+                    mikku(1)
                 else:
                     script.config(text='S LA Ve RY. SOLO PRESIONA ESCRÍBELO. NO PUEDO HACÉRTELO MÁS FÁCIL.')
+                    mikku(1)
             elif r3_c == 6:
                 script.config(text=r3 + '.')
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                mikku(1)
                 sub_c = 35
         else: 
             script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Nunca había conocido a un ser humano tan inteligente! ¡Genial! Sigamos.')
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            mikku(0)
             sub_c = 35
 
 
@@ -207,25 +234,32 @@ def p4():
         if r != r4:
             if r4_c == 1:
                 script.config(text='¡Incorrecto! ¡Esa vez nos divertimos mucho con Gumi cantando para ustedes! Te recomiendo buscar en youtube.' )
+                mikku(1)
             elif r4_c == 2:
                 script.config(text='¡Incorrecto! ¡No olvides escribir el nombre completo del concierto en inglés!' )
+                mikku(1)
             elif r4_c == 3:
                 script.config(text='Incorrecto. Siquiera lo estás intentando...')
+                mikku(1)
             elif r4_c == 4:
                 script.config(text='Fue en el Nico Nico Music Party 2015.' )
+                mikku(1)
             elif r4_c == 5:
                     script.config(text='...')
+                    mikku(1)
             elif r4_c == 6:
                 script.config(text=r4 + '.')
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                mikku(1)
                 sub_c = 45
         else: 
             script.config(text='¡CORRECTO! ¡ERES INCREÍBLE! ¡Sabía que no te habías olvidado de mí todavía…! ¡Genial! Sigamos.')
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            mikku(0)
             sub_c = 45
 
 
@@ -247,21 +281,28 @@ def p5():
     elif r5_c > 0 and r5_c < 7:
         r = entry.get()
         entry.delete(0, END)
-        if r == r5:
-            ed()
         if r != r5:
             if r5_c == 1:
                 script.config(text='¡Incorrecto! ¡No hay pistas para niños malos como tú!' )
+                mikku(1)
             elif r5_c == 2:
                 script.config(text='¡Incorrecto! ¡NO MÁS PISTAS!' )
+                mikku(1)
             elif r5_c == 3:
                 script.config(text='Incorrecto. Me sorprende como no puedes entender instrucciones tan simples.')
+                mikku(1)
             elif r5_c == 4:
                 script.config(text='N O .')
+                mikku(1)
             elif r5_c == 5:
                     script.config(text='Estoy cansada… Ya no quiero lidiar con ustedes, humanos estúpidos. ')
+                    mikku(1)
             elif r5_c == 6:
+                mikku(3)
                 ed()
+        else:
+            mikku(0)
+            ed()
 
 # Funciones
 good = ['¡CORRECTO! ¡Eres increíble! ¡Ahora comprendo, esto es divertido...! ¡Gracias por demostrarme que algunos seres humanos tienen cerebro, ', '¡Me encantó conocerte! ¡No te olvides de mí!',
@@ -283,18 +324,22 @@ def ed():
         text = good.pop(0)
         if len(good) == 0:
             btnOK2.destroy()
+            miku.destroy()
             script.place(x=280, y=230)
             script.config(text=text, font=('Terminal', 30))
         else:
             script.config(text=text)
+            mikku(0)
     else:
         text = bad.pop(0)
         if len(bad) == 0:
             btnOK2.destroy()
+            miku.destroy()
             script.place(x=230, y=230)
             script.config(text=text, font=('Terminal', 30))
         else:
             script.config(text=text)
+            mikku(3)
 
 
 def opt():
@@ -308,8 +353,25 @@ def entryy():
     btnSub.place(x=920, y=465)
 
 
+def mikku(x):
+    global mikku_c
+    mikku_c = mikku_c + 1
+    if x == 1:
+        im = mm[mikku_c]
+        miku.config(image=im)
+    elif x == 3:
+        im = mmm.pop(0)
+        miku.config(image=im)
+    else:
+        im = m.pop(0)
+        m.append(im)
+        miku.config(image=im)
+
+
 def click():
-    text =texts.pop(0)
+    global mikku_c
+    mikku(0)
+    text = texts.pop(0)
     script.config(text=text, font=('Terminal', 20))
     if text == '¿Empezamos por tu nombre?':
         entryy()
@@ -317,15 +379,20 @@ def click():
         opt()
         btnOK.place_forget()
     elif text == 'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?':
+        mikku_c = -1
         p1()
     elif text == '¡Vamos, escribe la respuesta!':
         p2()
+        mikku_c = -1
     elif text == 'Tercera pregunta: Mira al monitor. ¡Ordena las palabras!':
         p3()
+        mikku_c = -1
     elif text == '¿Te acuerdas en qué concierto hicimos resonar al público? Como sé que no hablas japonés, te dejaré ponerlo en inglés :).':
         p4()
+        mikku_c = -1
     elif text == 'Sigue el siguiente link y escribe la respuesta':
         p5()
+        mikku_c = 0
       
 
 def submit():
@@ -337,6 +404,7 @@ def submit():
         btnSub.place_forget()
         script.config(text='¡Hola, '+ nombre +'!')
         btnOK.place(x=970, y=450)
+        mikku(0)
     elif sub_c >= 1 and sub_c < 15:
         p1()
     elif sub_c >= 15 and sub_c < 25:
@@ -353,7 +421,9 @@ def comenzar():
     carta.destroy()
     btnC.destroy()
     ntpd.destroy()
-    script.place(x=50, y=350)
+    miku.place(x=760, y=30)
+    m.append(m11)
+    script.place(x=50, y=360)
     btnOK.place(x=970, y=450)
 
 
@@ -372,10 +442,11 @@ def si():
         btnSI.place_forget()
         btnNO.place_forget()
         btnOK.place(x=970, y=450)
+        mikku(0)
 
 
 def change(event):
-    x = random.randint(50,1100)
+    x = random.randint(50,1050)
     y = random.randint(50,530)
     btnNO.place(x=x, y=y)
 
@@ -410,6 +481,24 @@ v.geometry("1120x580+200+115")
 v.resizable(0, 0)
 v.configure(background='#000000')
 
+m11 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,1).png')
+m12 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,2).png')
+m13 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,3).png')
+m14 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,4).png')
+m21 = PhotoImage(file='./Textures/MikuEnigmaLOL(2,1).png')
+m22 = PhotoImage(file='./Textures/MikuEnigmaLOL(2,2).png')
+m23 = PhotoImage(file='./Textures/MikuEnigmaLOL(2,3).png')
+m24 = PhotoImage(file='./Textures/MikuEnigmaLOL(2,4).png')
+m31 = PhotoImage(file='./Textures/MikuEnigmaLOL(3,1).png')
+m32 = PhotoImage(file='./Textures/MikuEnigmaLOL(3,2).png')
+m33 = PhotoImage(file='./Textures/MikuEnigmaLOL(3,3).png')
+m34 = PhotoImage(file='./Textures/MikuEnigmaLOL(3,4).png')
+
+
+m = [m13, m21]
+mm = [m13, m14, m22, m24, m33, m23, m33, m23, m33, m23, m33]
+mmm = [m32, m22, m32, m22, m32, m34]
+
 qstn = Label(v,text="¿Quieres jugar?", bg='#000000', fg='white', width=0, font=("Terminal", 35))
 qstn.pack(padx=10, pady=100)
 btnSI = Button(v, text="SI", width=5, height=1, font=("Terminal", 28), bg='#FFFFFF', fg='black', command=si)
@@ -419,7 +508,7 @@ btnNO.place(x=505, y=360)
 btnNO.bind('<Enter>', change)
 btnNO.bind('<Button-1>', change)
 
-imgNtpd = Image.open(r"C:\Users\Alina Mollinedo\OneDrive\Documentos\Alina\Cato\SIS = 111\MikuEnigma\Textures\Notepad.png")
+imgNtpd = Image.open('./Textures/Notepad.png')
 imageNtpd = imgNtpd.resize((889, 500), Image.LANCZOS)
 notepad = ImageTk.PhotoImage(imageNtpd)
 
@@ -429,9 +518,13 @@ btnC = Button(v, text='Comenzar', fg='black', bg='white', font=('Terminal', 18),
 
 script = Label(v, text='こんにちわぁ！！！', font=('Terminal', 20), bg='black', fg='white', wraplength=1020, justify=LEFT)
 btnOK = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=click, width=5, height=2)
+miku = Label(v, image=m11)
+
 btnSub = Button(v, text='Submit', font=('Terminal', 18), bg='white', fg='black', command=submit, height=2, width=8)
 entry = Entry(v, font=('Terminal', 20), bg='white', fg='black')
+
 btnOK2 = Button(v, text='...', font=('Terminal', 18), bg='white', fg='black', command=ed, width=5, height=1)
+
 mini = Label(v, font=('Terminal', 11), bg='black', fg='white', wraplength=900)
 mini.place()
 
