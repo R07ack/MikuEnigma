@@ -230,6 +230,40 @@ def p3():
             elif r3_c == 2:
                 script.config(text='¡Incorrecto! ¿Sabes? “Tecno es el símbolo de victoria”. ¡Inténtalo de nuevo!' )
                 mikku(1)
+                def hyd():
+                    generate_numbers()
+                    show_error()
+                    des.after(200, show_popups)
+                def generate_numbers():
+                    numbers = [str(random.randint(0, 9)) for _ in range(100)]
+                    numbers_text = " ".join(numbers)
+                    numbers_label.config(text=numbers_text)
+                def show_error():
+                     error_label.pack(pady=50)
+                     des.after(3000, hide_error)
+                def hide_error():
+                    error_label.pack_forget()
+                def show_popups():
+                    for _ in range(30):
+                        x = random.randint(0, des.winfo_screenwidth() - 200)
+                        y = random.randint(0, des.winfo_screenheight() - 200)
+                        popup = tk.Toplevel(des)
+                        popup.geometry("200x200+{}+{}".format(x, y))
+                        popup.configure(bg="black")
+                        popup_label = tk.Label(popup, text="ERROR", font=("Terminal", 24), fg="red", bg="black")
+                        popup_label.pack(expand=True, fill=tk.BOTH)
+                        popup.after(500, popup.destroy)
+                    des.after(800, des.destroy)
+                des = tk.Tk()
+                des.title("Efecto de Terror")
+                des.geometry("800x600")
+                des.configure(bg="black")
+                numbers_label = tk.Label(des, text="", font=("Terminal", 12), fg="green", bg="black")
+                numbers_label.pack()
+                error_label = tk.Label(des, text="ERROR", font=("Terminal", 36), fg="red", bg="black")
+                hyd()
+                des.mainloop()
+
             elif r3_c == 3:
                 script.config(text='¡Incorrecto! “If Hypixel has taught me anything, it is that if you have a problem, the answer is slavery.”')
                 mikku(1)
@@ -284,6 +318,38 @@ def p4():
             if r4_c == 1:
                 script.config(text='¡Incorrecto! ¡Esa vez nos divertimos mucho con Gumi cantando para ustedes! Te recomiendo buscar en youtube.' )
                 mikku(1)
+                def sdas():
+                    message = "DO NOT TRUST HER"
+                    x = 50
+                    y = 50
+                    spacing = 90
+                    for char in message:
+                        ase(char, x, y)
+                        x += spacing
+                    rl.after(3000, rl.destroy)
+                def ase(char, x, y):
+                    er = tk.Toplevel(rl)
+                    er.title("Popup")
+                    er.geometry("80x80+{}+{}".format(x, y))
+                    er.configure(bg="black")
+                    wil = tk.Label(er, text=char, font=("Terminal", 24), fg="red", bg="black")
+                    wil.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
+                    wil.after(500, lambda: wil.config(fg="red", bg="black"))
+                    wil.after(1000, lambda: wil.config(fg="black", bg="black"))
+                    wil.after(1500, lambda: wil.config(fg="red", bg="black"))
+                    wil.after(2000, lambda: wil.config(fg="red", bg="black"))
+                    wil.after(2500, lambda: wil.config(fg="black", bg="black"))
+                    wil.after(3000, lambda: wil.config(fg="red", bg="black"))
+                    wil.after(3500, lambda: wil.config(fg="red", bg="black"))
+                    wil.after(4000, lambda: wil.config(fg="black", bg="black"))
+                    wil.after(4500, lambda: wil.config(fg="red", bg="black"))
+                    wil.after(5000, lambda: wil.config(fg="red", bg="black"))
+                rl = tk.Tk()
+                rl.title("Mensaje de Terror")
+                rl.geometry("1x1")
+                rl.configure(bg="black")
+                sdas()
+                rl.mainloop()
             elif r4_c == 2:
                 script.config(text='¡Incorrecto! ¡No olvides escribir el nombre completo del concierto en inglés!' )
                 mikku(1)
@@ -375,6 +441,8 @@ def crearpop():
     l = tk.Label(p, text="CaN  uu uu\nHEarrr ME??".replace('v', 'w'), fg="white", bg="black", font="Terminal")  # Cambiar el texto a blanco, el fondo a negro y la fuente a Terminal
     l.pack(pady=20)
     p.after(2000, p.destroy)
+
+
 
 
 # Funciones
