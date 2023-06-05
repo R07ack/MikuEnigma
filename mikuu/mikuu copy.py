@@ -40,8 +40,8 @@ def p1():
     if sub_c == 1:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, pady=60)
-        btnSub.place(x=920, y=445)  
+        entry.pack(side=BOTTOM, pady=40)
+        btnSub.place(x=920, y=455)  
     elif r1_c > 0 and r1_c < 8:
         r = entry.get()
         entry.delete(0, END)
@@ -90,13 +90,13 @@ def p1():
                 mikku(1)
             elif r1_c == 5:
                 mini.config(text=minit[0])
-                mini.place(x=250, y=435)
+                mini.place(x=250, y=445)
                 script.config(text='La respuesta es ' + str(r1) + '.')
                 mikku(1)
             elif r1_c == 6:
                 script.config(text='Solo coloca la respuesta...')
                 mini.config(text=minit[1])
-                mini.place(x=710, y=410)
+                mini.place(x=745, y=420)
                 mikku(1)
                 y = Tk()
                 y.title("Glitch Effect")
@@ -140,19 +140,19 @@ def p2():
     if sub_c == 15:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, pady=60)
-        btnSub.place(x=920, y=445)   
+        entry.pack(side=BOTTOM, pady=40)
+        btnSub.place(x=920, y=455)   
     elif r2_c > 0 and r2_c < 7:
         r = entry.get()
         entry.delete(0, END)
         if r.upper() != r2:
             if r2_c == 1:
-                script.config(text='¡Incorrecto! Creo que algo cambió en la imagen.' )
+                script.config(text='¡Incorrecto! Creo que algo cambió en el monitor.' )
                 mikku(1)
             elif r2_c == 2:
                 script.config(text='''¡Incorrecto!                         ¡Inténtalo de nuevo!''')
                 mini.config(text=minit[2])
-                mini.place(x=275, y=410)
+                mini.place(x=285, y=420)
                 mikku(1)
                 def move_objects():
                     x = random.randint(0, r.winfo_width() - image_width)
@@ -185,15 +185,15 @@ def p2():
             elif r2_c == 5:
                 script.config(text='                         La respuesta es ' + r2 +'.')
                 mini.config(text=minit[3])
-                mini.place(x=120, y=410)
+                mini.place(x=150, y=420)
                 mikku(1)
             elif r2_c == 6:
                 script.config(text='Es ' + r2 + '.')
                 mini.config(text=minit[4])
-                mini.place(x=240, y=410)
+                mini.place(x=255, y=420)
                 entry.pack_forget()
                 btnSub.place_forget()
-                btnOK.place(x=970, y=450)
+                btnOK.place(x=985, y=460)
                 mikku(1)
                 sub_c = 25
         else: 
@@ -218,14 +218,14 @@ def p3():
     if sub_c == 25:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, pady=60)
-        btnSub.place(x=920, y=445)  
+        entry.pack(side=BOTTOM, pady=40)
+        btnSub.place(x=920, y=455)  
     elif r3_c > 0 and r3_c < 7:
         r = entry.get()
         entry.delete(0, END)
         if r != r3:
             if r3_c == 1:
-                script.config(text='¡Incorrecto! Te ayudo con una pista: ¡Si tu lavabo está arruinado, llamas a un plomero; si tu necesitas construir una casa, llamas a un arquitecto, y si necesitas derrocar una dictadura llamas a un anarquista!')
+                script.config(text='¡Incorrecto! Pista: ¡Si tu lavabo está arruinado, llamas a un plomero; si tu necesitas construir una casa, llamas a un arquitecto, y si necesitas derrocar una dictadura llamas a un anarquista!')
                 mikku(1)
             elif r3_c == 2:
                 script.config(text='¡Incorrecto! ¿Sabes? “Tecno es el símbolo de victoria”. ¡Inténtalo de nuevo!')
@@ -271,7 +271,7 @@ def p3():
                 script.config(text='                    LA RESPUESTA ES SLAVERY.' )
                 mikku(1)
                 mini.config(text=minit[5])
-                mini.place(x=150, y=410)
+                mini.place(x=175, y=420)
             elif r3_c == 5:
                 if r == r3.lower():
                     script.config(text='E N   M A Y Ú S C U LA S.')
@@ -309,8 +309,8 @@ def p4():
     if sub_c == 35:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, pady=60)
-        btnSub.place(x=920, y=445)    
+        entry.pack(side=BOTTOM, pady=40)
+        btnSub.place(x=920, y=455)    
     elif r4_c > 0 and r4_c < 7:
         r = entry.get()
         entry.delete(0, END)
@@ -383,7 +383,6 @@ r5_c = -1
 
 
 def p5():
-    t.destroy()
     global r5_c
     global sub_ce
     r5_c = r5_c + 1
@@ -391,8 +390,8 @@ def p5():
     if sub_c == 45:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, pady=60)
-        btnSub.place(x=920, y=445) 
+        entry.pack(side=BOTTOM, pady=40)
+        btnSub.place(x=920, y=455) 
         lk()   
     elif r5_c > 0 and r5_c < 7:
         r = entry.get()
@@ -491,6 +490,7 @@ def ed():
 def lk():
     def open_link():
         webbrowser.open("https://archiveofourown.org/works/47217961")
+        t.destroy()
     t = Tk()
     t.title("Abrir enlace")
     t.geometry("400x200")
@@ -511,8 +511,8 @@ def lk():
 
 def entryy():
     btnOK.place_forget()
-    entry.pack(side=BOTTOM, pady=60)
-    btnSub.place(x=920, y=445)
+    entry.pack(side=BOTTOM, pady=40)
+    btnSub.place(x=920, y=455)
 
 
 def mikku(x):
@@ -538,18 +538,22 @@ def click():
     if text == '¿Empezamos por tu nombre?':
         entryy()
     elif text == '¿Comprendes las reglas?':
-        btnSI.place(x=400, y=485)
-        btnNO.place(x=600, y=485)
+        btnSI.place(x=400, y=500)
+        btnNO.place(x=600, y=500)
         btnOK.place_forget()
     elif text == 'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?':
         mikku_c = -1
         p1()
     elif text == '¡Vamos, escribe la respuesta!':
+        fondo.place_forget()
+        fondo2.place(x=0, y=0)
+        mikku_c = -1
         p2()
-        mikku_c = -1
     elif text == 'Tercera pregunta: Mira al monitor. ¡Ordena las palabras!':
-        p3()
+        fondo2.place_forget()
+        fondo.place(x=0, y=0)
         mikku_c = -1
+        p3()
     elif text == '¿Te acuerdas en qué concierto hicimos resonar al público? Como sé que no hablas japonés, te dejaré ponerlo en inglés :).':
         p4()
         mikku_c = -1
@@ -595,16 +599,16 @@ def si():
     si_c = si_c + 1
     if si_c == 1:
         qstn.destroy()
-        btnSI.pack_forget()
-        btnNO.place_forget()
         ntpd.place(x=115, y=40)
         carta.place(x=155, y=150)
         btnC.place(x=500, y=430)
+        btnSI.pack_forget()
+        btnNO.place_forget()
     if si_c == 2:
         script.config(text='Empecemos :)')
+        btnOK.place(x=970, y=450)
         btnSI.place_forget()
         btnNO.place_forget()
-        btnOK.place(x=970, y=450)
         mikku(0)
 
 
@@ -647,6 +651,9 @@ play_music()
 
 fnd = PhotoImage(file='./Textures/FONDO NORMAL.png')
 fondo = Label(v, image=fnd, bd=0)
+fnd2 = PhotoImage(file='./Textures/FONDO PATOS.png')
+fondo2 = Label(v, image=fnd2, bd=0)
+
 
 m11 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,1).png')
 m12 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,2).png')
@@ -684,7 +691,7 @@ carta = Label(v,text=text, font=("Terminal", 20), bg='white', fg='#08113b', wrap
 btnC = Button(v, text='Comenzar', fg='black', bg='white', font=('Terminal', 18), command=comenzar, height=2, width=10)
 
 script = Label(v, text='こんにちわぁ！！！', font=('Terminal', 20), bg='black', fg='white', wraplength=900, justify=LEFT, 
-               height=4, width=61, bd=4, relief='groove')
+               height=5, width=61, bd=4, relief='groove')
 btnOK = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=click, width=5, height=2)
 miku = Label(v, image=m11)
 
