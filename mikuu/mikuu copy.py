@@ -73,7 +73,7 @@ def p1():
                 w = tk.Tk()
                 w.title("Pop-ups")
                 w.geometry("300x200")
-                w.configure(bg="black")  # Establecer el fondo principal a negro
+                w.configure(bg="black")
                 count = 0
                 while count < 15:
                     crearpop()
@@ -148,33 +148,33 @@ def p2():
             if r2_c == 1:
                 script.config(text='¡Incorrecto! Creo que algo cambió en la imagen.' )
                 mikku(1)
-                def move_objects():
-                    x = random.randint(0, root.winfo_width() - image_width)
-                    y = random.randint(0, root.winfo_height() - image_height)
-                    canvas.coords(image_id, x, y)
-                    canvas.coords(text_id, x, y + image_height)
-                    root.after(10, move_objects)
-                root = tk.Tk()
-                root.title("RAL")
-                root.geometry("400x300")
-                root.configure(bg="black")
-                canvas = tk.Canvas(root, width=400, height=300, bg="black")
-                canvas.pack()
-                image = Image.open("./Textures/Scary_eye.png")
-                image_width, image_height = image.size
-                image = image.resize((100, 100), Image.ANTIALIAS)
-                photo = ImageTk.PhotoImage(image)
-                image_id = canvas.create_image(0, 0, image=photo, anchor=tk.NW)
-                text_id = canvas.create_text(0, 0, text="I can see you", font=("Terminal", 14), fill="white", anchor=tk.NW)
-                root.after(3000, root.destroy)
-                root.update()
-                move_objects()
-                root.mainloop()
             elif r2_c == 2:
                 script.config(text='''¡Incorrecto!                         ¡Inténtalo de nuevo!''')
                 mini.config(text=minit[2])
                 mini.place(x=240, y=370)
                 mikku(1)
+                def move_objects():
+                    x = random.randint(0, r.winfo_width() - image_width)
+                    y = random.randint(0, r.winfo_height() - image_height)
+                    canvas.coords(image_id, x, y)
+                    canvas.coords(text_id, x, y + image_height)
+                    r.after(10, move_objects)
+                r = tk.Tk()
+                r.title("RAL")
+                r.geometry("400x300")
+                r.configure(bg="black")
+                canvas = tk.Canvas(r, width=400, height=300, bg="black")
+                canvas.pack()
+                mg = Image.open('.Textures/Scary_eye.png')
+                image_width, image_height = mg.size
+                mg = mg.resize((100, 100), Image.ANTIALIAS)
+                photo = ImageTk.PhotoImage(mg)
+                image_id = canvas.create_image(0, 0, image=photo, anchor=tk.NW)
+                text_id = canvas.create_text(0, 0, text="I can see you", font=("Terminal", 14), fill="white", anchor=tk.NW)
+                r.after(3000, r.destroy)
+                r.update()
+                move_objects()
+                r.mainloop()
             elif r2_c == 3:
                 script.config(text='¡Incorrecto! ES… amarillo.')
                 mikku(1)
@@ -496,7 +496,6 @@ def comenzar():
     m.append(m11)
     script.place(x=50, y=360)
     btnOK.place(x=970, y=450)
-
 
 def si():
     global si_c
