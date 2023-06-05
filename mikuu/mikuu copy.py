@@ -79,7 +79,7 @@ def p1():
                     crearpop()
                     count += 1
                     w.update()
-                    time.sleep(0.1)
+                    time.sleep(0.07)
                 w.destroy()
             elif r1_c == 3:
                 script.config(text='¡Tú puedes! ' + txt.format(limInf, limSup).capitalize())
@@ -158,7 +158,7 @@ def p2():
                     y = random.randint(0, r.winfo_height() - image_height)
                     canvas.coords(image_id, x, y)
                     canvas.coords(text_id, x, y + image_height)
-                    r.after(10, move_objects)
+                    r.after(5, move_objects)
                 r = Toplevel()
                 r.title("RAL")
                 r.geometry("400x300")
@@ -171,7 +171,7 @@ def p2():
                 photo = ImageTk.PhotoImage(mg)
                 image_id = canvas.create_image(0, 0, image=photo, anchor='nw')
                 text_id = canvas.create_text(0, 0, text="I can see you", font=("Terminal", 14), fill="white", anchor='nw')
-                r.after(3000, r.destroy)
+                r.after(1000, r.destroy)
                 r.update()
                 move_objects()
                 r.mainloop()
