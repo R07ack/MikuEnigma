@@ -50,6 +50,7 @@ def p1():
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                fondo.place_forget()
                 mikku(1)
                 sub_c = 15
             else:
@@ -70,7 +71,7 @@ def p1():
             elif r1_c == 2:
                 script.config(text='¡Vamos! No es tan difícil, ' + txt.format(limInf, limSup))
                 mikku(1)
-                w = Tk()
+                w = Toplevel()
                 w.title("Pop-ups")
                 w.geometry("300x200")
                 w.configure(bg="black")
@@ -97,7 +98,7 @@ def p1():
                 mini.config(text=minit[1])
                 mini.place(x=745, y=420)
                 mikku(1)
-                y = Tk()
+                y = Toplevel()
                 y.title("Glitch Effect")
                 y.attributes('-fullscreen', True)
                 ca = Canvas(y)
@@ -113,6 +114,7 @@ def p1():
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                fondo.place_forget()
                 mikku(1)
                 sub_c = 15
 
@@ -193,6 +195,7 @@ def p2():
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=985, y=460)
+                fondo2.place_forget()
                 mikku(1)
                 sub_c = 25
         else: 
@@ -200,6 +203,8 @@ def p2():
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            fondo2.place_forget()
+            fondo.place(x=0, y=0)
             mikku(0)
             sub_c = 25
 
@@ -253,7 +258,7 @@ def p3():
                         popup_label.pack(expand=True, fill='both')
                         popup.after(500, popup.destroy)
                     des.after(800, des.destroy)
-                des = Tk()
+                des = Toplevel()
                 des.title("Efecto de Terror")
                 des.geometry("800x600")
                 des.configure(bg="black")
@@ -283,6 +288,7 @@ def p3():
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                fondo3.place_forget()
                 mikku(1)
                 sub_c = 35
         else: 
@@ -290,6 +296,8 @@ def p3():
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            fondo3.place_forget()
+            fondo.place(x=0, y=0)
             mikku(0)
             sub_c = 35
 
@@ -343,7 +351,7 @@ def p4():
                     wil.after(4000, lambda: wil.config(fg="black", bg="black"))
                     wil.after(4500, lambda: wil.config(fg="red", bg="black"))
                     wil.after(5000, lambda: wil.config(fg="red", bg="black"))
-                rl = Tk()
+                rl = Toplevel()
                 rl.title("Mensaje de Terror")
                 rl.geometry("1x1")
                 rl.configure(bg="black")
@@ -366,6 +374,7 @@ def p4():
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
+                fondo4.place_forget()
                 mikku(1)
                 sub_c = 45
         else: 
@@ -373,6 +382,8 @@ def p4():
             entry.pack_forget()
             btnSub.place_forget()
             btnOK.place(x=970, y=450)
+            fondo4.place_forget()
+            fondo.place(x=0, y=0)
             mikku(0)
             sub_c = 45
 
@@ -412,6 +423,7 @@ def p5():
                     script.config(text='Estoy cansada… Ya no quiero lidiar con ustedes, humanos estúpidos. ')
                     mikku(1)
             elif r5_c == 6:
+                fondo.place_forget()
                 mikku(3)
                 ed()
         else:
@@ -419,12 +431,12 @@ def p5():
             ed()
 #EFECTOS
 def glitch():
-
     w = y.winfo_screenwidth()
     h = y.winfo_screenheight()
     c = '#{:06x}'.format(random.randint(0, 0xFFFFFF))
     ca.create_rectangle(0, 0, w, h, fill=c)
     y.update()
+
 
 def crearpop():
     p = Toplevel()
@@ -490,7 +502,7 @@ def lk():
     def open_link():
         webbrowser.open("https://archiveofourown.org/works/47217961")
         t.destroy()
-    t = Tk()
+    t = Toplevel()
     t.title("Abrir enlace")
     t.geometry("400x200")
     t.configure(bg="black")
@@ -543,22 +555,29 @@ def click():
     elif text == 'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?':
         mikku_c = -1
         p1()
-    elif text == '¡Vamos, escribe la respuesta!':
+    elif text == 'Siguiente pregunta: ¡Dicen por ahí que una imagen vale más que mil palabras!':
         fondo.place_forget()
         fondo2.place(x=0, y=0)
+    elif text == '¡Vamos, escribe la respuesta!':
         mikku_c = -1
         p2()
     elif text == 'Tercera pregunta: Mira al monitor. ¡Ordena las palabras!':
         fondo2.place_forget()
-        fondo.place(x=0, y=0)
+        fondo3.place(x=0, y=0)
         mikku_c = -1
         p3()
+    elif text == '¡Bienvenido al cuarto acertijo! ¡Me alegra que hayas logrado llegar tan lejos!':
+        fondo3.place_forget()
+        fondo4.place(x=0, y=0)
     elif text == '¿Te acuerdas en qué concierto hicimos resonar al público? Como sé que no hablas japonés, te dejaré ponerlo en inglés :).':
-        p4()
         mikku_c = -1
+        p4()
+    elif text == '¡Última pregunta! Felicidades por haber llegado hasta este punto.':
+        fondo4.place_forget()
+        fondo.place(x=0, y=0)
     elif text == 'Sigue el siguiente link y escribe la respuesta':
-        p5()
         mikku_c = 0
+        p5()
       
 
 def submit():
@@ -652,6 +671,10 @@ fnd = PhotoImage(file='./Textures/FONDO NORMAL.png')
 fondo = Label(v, image=fnd, bd=0)
 fnd2 = PhotoImage(file='./Textures/FONDO PATOS.png')
 fondo2 = Label(v, image=fnd2, bd=0)
+fnd3 = PhotoImage(file='./Textures/FONDO LETRAS.png')
+fondo3 = Label(v, image=fnd3, bd=0)
+fnd4 = PhotoImage(file='./Textures/FONDO NICONICO2015.png')
+fondo4 = Label(v, image=fnd4, bd=0)
 
 
 m11 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,1).png')
