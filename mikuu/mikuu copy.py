@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import tkinter as tk
 import time
 import winsound
+import webbrowser
 si_c = 0
 sub_c = 0
 mikku_c = -1
@@ -165,7 +166,7 @@ def p2():
                 r.configure(bg="black")
                 canvas = tk.Canvas(r, width=400, height=300, bg="black")
                 canvas.pack()
-                mg = Image.open('.Textures/Scary_eye.png')
+                mg = Image.open('./Textures/Scary_eye.png')
                 image_width, image_height = mg.size
                 mg = mg.resize((100, 100), Image.ANTIALIAS)
                 photo = ImageTk.PhotoImage(mg)
@@ -316,7 +317,8 @@ r5_c = -1
 
 
 def p5():
-
+    lk()
+    t.destroy()
     global r5_c
     global sub_ce
     r5_c = r5_c + 1
@@ -418,6 +420,25 @@ def ed():
             script.config(text=text)
             mikku(3)
 
+def lk():
+    def open_link():
+        webbrowser.open("https://archiveofourown.org/works/47217961")
+    t = tk.Tk()
+    t.title("Abrir enlace")
+    t.geometry("400x200")
+    t.configure(bg="black")
+    font_style = ("Terminal", 14)
+    button_style = {
+        "bg": "black",
+        "fg": "white",
+        "font": font_style,
+        "activebackground": "gray",
+        "activeforeground": "white",
+        "relief": "raised"
+        }
+    om = tk.Button(t, text="Abrir enlace", command=open_link, **button_style)
+    om.pack(pady=20)
+    t.mainloop()
 
 def opt():
     btnSI.place(x=200, y=440)
@@ -468,6 +489,7 @@ def click():
         p4()
         mikku_c = -1
     elif text == 'Sigue el siguiente link y escribe la respuesta':
+
         p5()
         mikku_c = 0
       
