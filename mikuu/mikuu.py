@@ -13,7 +13,7 @@ print(r1)
 r2 = 'PATOS'
 r3 = 'SLAVERY'
 r4 = 'NICONICOMUSICPARTY2015'
-r5 = 'MIKUSIEMPREGANA15'
+r5 = 'MikuSiempreGana15'
 
 
 
@@ -455,7 +455,7 @@ def ed():
             btnOK2.destroy()
             miku.destroy()
             fondo.destroy()
-            script.place(x=120, y=170)
+            script.place(x=150, y=170)
             script.config(text=text, font=('Terminal', 30), bd=0, width=25)
         else:
             script.config(text=text)
@@ -465,7 +465,7 @@ def ed():
         if len(bad) == 0:
             btnOK2.destroy()
             miku.destroy()
-            script.place(x=120, y=170)
+            script.place(x=150, y=170)
             script.config(text=text, font=('Terminal', 30), bd=0, width=25)
         else:
             script.config(text=text)
