@@ -1,7 +1,6 @@
 import random
 from tkinter import *
 from PIL import Image, ImageTk
-import tkinter as tk
 import time
 import winsound
 import webbrowser
@@ -160,7 +159,7 @@ def p2():
                     canvas.coords(image_id, x, y)
                     canvas.coords(text_id, x, y + image_height)
                     r.after(10, move_objects)
-                r = Tk()
+                r = Toplevel()
                 r.title("RAL")
                 r.geometry("400x300")
                 r.configure(bg="black")
@@ -247,20 +246,20 @@ def p3():
                     for _ in range(30):
                         x = random.randint(0, des.winfo_screenwidth() - 200)
                         y = random.randint(0, des.winfo_screenheight() - 200)
-                        popup = tk.Toplevel(des)
+                        popup = Toplevel(des)
                         popup.geometry("200x200+{}+{}".format(x, y))
                         popup.configure(bg="black")
-                        popup_label = tk.Label(popup, text="ERROR", font=("Terminal", 24), fg="red", bg="black")
-                        popup_label.pack(expand=True, fill=tk.BOTH)
+                        popup_label = Label(popup, text="ERROR", font=("Terminal", 24), fg="red", bg="black")
+                        popup_label.pack(expand=True, fill='both')
                         popup.after(500, popup.destroy)
                     des.after(800, des.destroy)
-                des = tk.Tk()
+                des = Tk()
                 des.title("Efecto de Terror")
                 des.geometry("800x600")
                 des.configure(bg="black")
-                numbers_label = tk.Label(des, text="", font=("Terminal", 12), fg="green", bg="black")
+                numbers_label = Label(des, text="", font=("Terminal", 12), fg="green", bg="black")
                 numbers_label.pack()
-                error_label = tk.Label(des, text="ERROR", font=("Terminal", 36), fg="red", bg="black")
+                error_label = Label(des, text="ERROR", font=("Terminal", 36), fg="red", bg="black")
                 hyd()
                 des.mainloop()
 
@@ -328,12 +327,12 @@ def p4():
                         x += spacing
                     rl.after(3000, rl.destroy)
                 def ase(char, x, y):
-                    er = tk.Toplevel(rl)
+                    er = Toplevel(rl)
                     er.title("Popup")
                     er.geometry("80x80+{}+{}".format(x, y))
                     er.configure(bg="black")
-                    wil = tk.Label(er, text=char, font=("Terminal", 24), fg="red", bg="black")
-                    wil.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
+                    wil = Label(er, text=char, font=("Terminal", 24), fg="red", bg="black")
+                    wil.pack(expand=True, fill='both', padx=10, pady=10)
                     wil.after(500, lambda: wil.config(fg="red", bg="black"))
                     wil.after(1000, lambda: wil.config(fg="black", bg="black"))
                     wil.after(1500, lambda: wil.config(fg="red", bg="black"))
@@ -344,7 +343,7 @@ def p4():
                     wil.after(4000, lambda: wil.config(fg="black", bg="black"))
                     wil.after(4500, lambda: wil.config(fg="red", bg="black"))
                     wil.after(5000, lambda: wil.config(fg="red", bg="black"))
-                rl = tk.Tk()
+                rl = Tk()
                 rl.title("Mensaje de Terror")
                 rl.geometry("1x1")
                 rl.configure(bg="black")
