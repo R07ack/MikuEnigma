@@ -3,7 +3,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import tkinter as tk
 import time
-
+import winsound
 si_c = 0
 sub_c = 0
 mikku_c = -1
@@ -385,6 +385,12 @@ bad = ['¿Sabes? He tomado consciencia, he estado jugando contigo durante todo e
          'GAME OVER - BAD ENDING']
 
 
+def play_music():
+    winsound.PlaySound("STUDY WITH MIKU - part1 - (mp3cut.net) (1).wav", winsound.SND_LOOP | winsound.SND_ASYNC)
+
+def stop_music():
+    winsound.PlaySound(None, winsound.SND_PURGE)
+
 def ed():
     R = r1_c + r2_c + r3_c + r4_c + r5_c
     btnOK2.place(x=970, y=500)
@@ -550,6 +556,7 @@ v.title("MIKU ENIGMA")
 v.geometry("1120x580+200+115")
 v.resizable(0, 0)
 v.configure(background='#000000')
+play_music()
 
 m11 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,1).png')
 m12 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,2).png')
@@ -597,5 +604,5 @@ btnOK2 = Button(v, text='...', font=('Terminal', 18), bg='white', fg='black', co
 
 mini = Label(v, font=('Terminal', 11), bg='black', fg='white', wraplength=900)
 mini.place()
-
+v.protocol("WM_DELETE_WINDOW", stop_music)
 v.mainloop()
