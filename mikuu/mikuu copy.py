@@ -26,7 +26,7 @@ r5 = 'MIKUSIEMPREGANA15'
 r1_c = -1
 limInf = 0
 limSup = 50
-t = 'el número está entre {} y {}.'
+txt = 'el número está entre {} y {}.'
 notN = ['¿Creo haber pedido un número entre 0 y 50?', 'Sólo números entre 0 y 50...', 'No insistas.']
 
 
@@ -40,8 +40,8 @@ def p1():
     if sub_c == 1:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, padx=50, pady=70)
-        btnSub.place(x=920, y=465)  
+        entry.pack(side=BOTTOM, pady=60)
+        btnSub.place(x=920, y=445)  
     elif r1_c > 0 and r1_c < 8:
         r = entry.get()
         entry.delete(0, END)
@@ -66,12 +66,12 @@ def p1():
             else:
                 limInf = int(r)
             if r1_c == 1:
-                script.config(text='¡Incorrecto! Pero no te preocupes, ' + t.format(limInf, limSup))
+                script.config(text='¡Incorrecto! Pero no te preocupes, ' + txt.format(limInf, limSup))
                 mikku(1)
             elif r1_c == 2:
-                script.config(text='¡Vamos! No es tan difícil, ' + t.format(limInf, limSup))
+                script.config(text='¡Vamos! No es tan difícil, ' + txt.format(limInf, limSup))
                 mikku(1)
-                w = tk.Tk()
+                w = Tk()
                 w.title("Pop-ups")
                 w.geometry("300x200")
                 w.configure(bg="black")
@@ -83,26 +83,26 @@ def p1():
                     time.sleep(0.1)
                 w.destroy()
             elif r1_c == 3:
-                script.config(text='¡Tú puedes! ' + t.format(limInf, limSup).capitalize())
+                script.config(text='¡Tú puedes! ' + txt.format(limInf, limSup).capitalize())
                 mikku(1)
             elif r1_c == 4:
-                script.config(text='...' + t.format(limInf, limSup))
+                script.config(text='...' + txt.format(limInf, limSup))
                 mikku(1)
             elif r1_c == 5:
                 mini.config(text=minit[0])
-                mini.place(x=50, y=400)
+                mini.place(x=250, y=435)
                 script.config(text='La respuesta es ' + str(r1) + '.')
                 mikku(1)
             elif r1_c == 6:
                 script.config(text='Solo coloca la respuesta...')
                 mini.config(text=minit[1])
-                mini.place(x=495, y=370)
+                mini.place(x=710, y=410)
                 mikku(1)
-                y = tk.Tk()
+                y = Tk()
                 y.title("Glitch Effect")
                 y.attributes('-fullscreen', True)
-                ca = tk.Canvas(y)
-                ca.pack(fill=tk.BOTH, expand=True)
+                ca = Canvas(y)
+                ca.pack(fill='both', expand=True)
                 sta = time.time()
                 while time.time() - sta < 0.4:
                     glitch()
@@ -140,8 +140,8 @@ def p2():
     if sub_c == 15:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, padx=50, pady=70)
-        btnSub.place(x=920, y=465)   
+        entry.pack(side=BOTTOM, pady=60)
+        btnSub.place(x=920, y=445)   
     elif r2_c > 0 and r2_c < 7:
         r = entry.get()
         entry.delete(0, END)
@@ -152,7 +152,7 @@ def p2():
             elif r2_c == 2:
                 script.config(text='''¡Incorrecto!                         ¡Inténtalo de nuevo!''')
                 mini.config(text=minit[2])
-                mini.place(x=240, y=370)
+                mini.place(x=275, y=410)
                 mikku(1)
                 def move_objects():
                     x = random.randint(0, r.winfo_width() - image_width)
@@ -160,18 +160,18 @@ def p2():
                     canvas.coords(image_id, x, y)
                     canvas.coords(text_id, x, y + image_height)
                     r.after(10, move_objects)
-                r = tk.Tk()
+                r = Tk()
                 r.title("RAL")
                 r.geometry("400x300")
                 r.configure(bg="black")
-                canvas = tk.Canvas(r, width=400, height=300, bg="black")
+                canvas = Canvas(r, width=400, height=300, bg="black")
                 canvas.pack()
                 mg = Image.open('./Textures/Scary_eye.png')
                 image_width, image_height = mg.size
-                mg = mg.resize((100, 100), Image.ANTIALIAS)
+                mg = mg.resize((100, 100), Image.LANCZOS)
                 photo = ImageTk.PhotoImage(mg)
-                image_id = canvas.create_image(0, 0, image=photo, anchor=tk.NW)
-                text_id = canvas.create_text(0, 0, text="I can see you", font=("Terminal", 14), fill="white", anchor=tk.NW)
+                image_id = canvas.create_image(0, 0, image=photo, anchor='nw')
+                text_id = canvas.create_text(0, 0, text="I can see you", font=("Terminal", 14), fill="white", anchor='nw')
                 r.after(3000, r.destroy)
                 r.update()
                 move_objects()
@@ -185,12 +185,12 @@ def p2():
             elif r2_c == 5:
                 script.config(text='                         La respuesta es ' + r2 +'.')
                 mini.config(text=minit[3])
-                mini.place(x=50, y=370)
+                mini.place(x=120, y=410)
                 mikku(1)
             elif r2_c == 6:
                 script.config(text='Es ' + r2 + '.')
                 mini.config(text=minit[4])
-                mini.place(x=200, y=370)
+                mini.place(x=240, y=410)
                 entry.pack_forget()
                 btnSub.place_forget()
                 btnOK.place(x=970, y=450)
@@ -218,17 +218,17 @@ def p3():
     if sub_c == 25:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, padx=50, pady=70)
-        btnSub.place(x=920, y=465)  
+        entry.pack(side=BOTTOM, pady=60)
+        btnSub.place(x=920, y=445)  
     elif r3_c > 0 and r3_c < 7:
         r = entry.get()
         entry.delete(0, END)
         if r != r3:
             if r3_c == 1:
-                script.config(text='Incorrecto! Te ayudo con una pista: ¡Si tu lavabo está arruinado, llamas a un plomero; si tu necesitas construir una casa, llamas a un arquitecto, y si necesitas derrocar una dictadura llamas a un anarquista!' )
+                script.config(text='¡Incorrecto! Te ayudo con una pista: ¡Si tu lavabo está arruinado, llamas a un plomero; si tu necesitas construir una casa, llamas a un arquitecto, y si necesitas derrocar una dictadura llamas a un anarquista!')
                 mikku(1)
             elif r3_c == 2:
-                script.config(text='¡Incorrecto! ¿Sabes? “Tecno es el símbolo de victoria”. ¡Inténtalo de nuevo!' )
+                script.config(text='¡Incorrecto! ¿Sabes? “Tecno es el símbolo de victoria”. ¡Inténtalo de nuevo!')
                 mikku(1)
             elif r3_c == 3:
                 script.config(text='¡Incorrecto! “If Hypixel has taught me anything, it is that if you have a problem, the answer is slavery.”')
@@ -237,7 +237,7 @@ def p3():
                 script.config(text='                    LA RESPUESTA ES SLAVERY.' )
                 mikku(1)
                 mini.config(text=minit[5])
-                mini.place(x=50, y=370)
+                mini.place(x=150, y=410)
             elif r3_c == 5:
                 if r == r3.lower():
                     script.config(text='E N   M A Y Ú S C U LA S.')
@@ -275,8 +275,8 @@ def p4():
     if sub_c == 35:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, padx=50, pady=70)
-        btnSub.place(x=920, y=465)    
+        entry.pack(side=BOTTOM, pady=60)
+        btnSub.place(x=920, y=445)    
     elif r4_c > 0 and r4_c < 7:
         r = entry.get()
         entry.delete(0, END)
@@ -317,7 +317,6 @@ r5_c = -1
 
 
 def p5():
-    lk()
     t.destroy()
     global r5_c
     global sub_ce
@@ -326,8 +325,9 @@ def p5():
     if sub_c == 45:
         btnOK.place_forget()
         entry.delete(0, END)
-        entry.pack(side=BOTTOM, padx=50, pady=70)
-        btnSub.place(x=920, y=465)    
+        entry.pack(side=BOTTOM, pady=60)
+        btnSub.place(x=920, y=445) 
+        lk()   
     elif r5_c > 0 and r5_c < 7:
         r = entry.get()
         entry.delete(0, END)
@@ -363,7 +363,7 @@ def glitch():
     y.update()
 
 def crearpop():
-    p = tk.Toplevel()
+    p = Toplevel()
     p.title("ER ROR")
     p.geometry("200x100")
     p.configure(bg="black")  # Cambiar el fondo a negro
@@ -372,7 +372,7 @@ def crearpop():
     x = random.randint(0, ancho - 200)
     y = random.randint(0, alto - 100)
     p.geometry(f"200x100+{x}+{y}")
-    l = tk.Label(p, text="CaN  uu uu\nHEarrr ME??".replace('v', 'w'), fg="white", bg="black", font="Terminal")  # Cambiar el texto a blanco, el fondo a negro y la fuente a Terminal
+    l = Label(p, text="CaN  uu uu\nHEarrr ME??".replace('v', 'w'), fg="white", bg="black", font="Terminal")  # Cambiar el texto a blanco, el fondo a negro y la fuente a Terminal
     l.pack(pady=20)
     p.after(2000, p.destroy)
 
@@ -423,7 +423,7 @@ def ed():
 def lk():
     def open_link():
         webbrowser.open("https://archiveofourown.org/works/47217961")
-    t = tk.Tk()
+    t = Tk()
     t.title("Abrir enlace")
     t.geometry("400x200")
     t.configure(bg="black")
@@ -436,19 +436,15 @@ def lk():
         "activeforeground": "white",
         "relief": "raised"
         }
-    om = tk.Button(t, text="Abrir enlace", command=open_link, **button_style)
-    om.pack(pady=20)
+    om = Button(t, text="Abrir enlace", command=open_link, **button_style)
+    om.pack(pady=90)
     t.mainloop()
-
-def opt():
-    btnSI.place(x=200, y=440)
-    btnNO.place(x=400, y=440)
 
 
 def entryy():
     btnOK.place_forget()
-    entry.pack(side=BOTTOM, anchor='w', padx=50, pady=140)
-    btnSub.place(x=920, y=465)
+    entry.pack(side=BOTTOM, pady=60)
+    btnSub.place(x=920, y=445)
 
 
 def mikku(x):
@@ -474,7 +470,8 @@ def click():
     if text == '¿Empezamos por tu nombre?':
         entryy()
     elif text == '¿Comprendes las reglas?':
-        opt()
+        btnSI.place(x=400, y=485)
+        btnNO.place(x=600, y=485)
         btnOK.place_forget()
     elif text == 'Primera pregunta: Estoy pensando en un número entre  0 y  50.  ¿Puedes adivinarlo?':
         mikku_c = -1
@@ -489,7 +486,6 @@ def click():
         p4()
         mikku_c = -1
     elif text == 'Sigue el siguiente link y escribe la respuesta':
-
         p5()
         mikku_c = 0
       
@@ -520,6 +516,7 @@ def comenzar():
     carta.destroy()
     btnC.destroy()
     ntpd.destroy()
+    fondo.place(x=0, y=0)
     miku.place(x=760, y=30)
     m.append(m11)
     script.place(x=50, y=360)
@@ -580,6 +577,9 @@ v.resizable(0, 0)
 v.configure(background='#000000')
 play_music()
 
+fnd = PhotoImage(file='./Textures/FONDO NORMAL.png')
+fondo = Label(v, image=fnd, bd=0)
+
 m11 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,1).png')
 m12 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,2).png')
 m13 = PhotoImage(file='./Textures/MikuEnigmaLOL(1,3).png')
@@ -615,7 +615,8 @@ ntpd = Label(v, image=notepad)
 carta = Label(v,text=text, font=("Terminal", 20), bg='white', fg='#08113b', wraplength=840, justify=LEFT)
 btnC = Button(v, text='Comenzar', fg='black', bg='white', font=('Terminal', 18), command=comenzar, height=2, width=10)
 
-script = Label(v, text='こんにちわぁ！！！', font=('Terminal', 20), bg='black', fg='white', wraplength=1020, justify=LEFT)
+script = Label(v, text='こんにちわぁ！！！', font=('Terminal', 20), bg='black', fg='white', wraplength=900, justify=LEFT, 
+               height=4, width=61, bd=4, relief='groove')
 btnOK = Button(v, text='Ok', font=('Terminal', 18), bg='white', fg='black', command=click, width=5, height=2)
 miku = Label(v, image=m11)
 
